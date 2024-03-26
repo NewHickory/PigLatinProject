@@ -12,6 +12,11 @@ const rl = readline.createInterface({
 
 
 
+// const userInput = (element) => {
+//   input = element.value
+//   console.log("User input is: ", input)
+// }
+
 const pigLatin = (word) => {
 
   let pig_latin_array = []
@@ -27,7 +32,7 @@ const pigLatin = (word) => {
     console.log('Word in array:', w)
 
     // Find position of first vowel in word with regex
-    position = w.search(/[aeiou]/)
+    let position = w.search(/[aeiou]/)
     console.log('Position of first vowel:', position)
 
     // If first letter in word is vowel, add 'yay' to end of word and push to new array
@@ -52,15 +57,10 @@ const pigLatin = (word) => {
   }
 
   // Join new array to string and then replace commas with spaces for readability
-
   let result = pig_latin_array.join().replace(',', ' ');
   console.log('New pig latin phrase:', result);
   return result;
 }
-
-let text = "Mr. Blue has a blue house";
-let position = text.search(/[aeiou]/); // Regular expression to match any of 'a', 'e', or 'i'
-console.log(position); // Output: 7
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
