@@ -11,11 +11,56 @@ const rl = readline.createInterface({
 });
 
 
+
 const pigLatin = (word) => {
 
-  // Your code here
+  let pig_latin_array = []
 
+  // Split input into an array of words
+  let words = word.split(' ')
+  console.log('Input to array:', words)
+
+  // Iterate through words in array and perform operations based on position of first vowel in word
+  for (let w of words) {
+    w = w.trim()
+    w = w.toLowerCase()
+    console.log('Word in array:', w)
+
+    // Find position of first vowel in word with regex
+    position = w.search(/[aeiou]/)
+    console.log('Position of first vowel:', position)
+
+    // If first letter in word is vowel, add 'yay' to end of word and push to new array
+    if (position === 0) {
+      let new_w = w + 'yay'
+      let count = pig_latin_array.push(new_w)
+      console.log('Pig Latin array length:', count)
+      console.log(pig_latin_array)
+    }
+
+    // If first letter in word is not a vowel, take all consonants up to first vowel, move to end of new word followed by 'yay'
+
+    else if (position > 0) {
+      let from_vowel = w.slice(position);
+      let consonants = w.slice(0, position);
+      let new_w = from_vowel + consonants + 'ay';
+      let count = pig_latin_array.push(new_w);
+      console.log('Pig Latin array length:', count);
+      console.log(pig_latin_array);
+    }
+  
+  }
+
+  // Join new array to string and then replace commas with spaces for readability
+
+  let result = pig_latin_array.join().replace(',', ' ');
+  console.log('New pig latin phrase:', result);
+  return result;
 }
+
+let text = "Mr. Blue has a blue house";
+let position = text.search(/[aeiou]/); // Regular expression to match any of 'a', 'e', or 'i'
+console.log(position); // Output: 7
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
